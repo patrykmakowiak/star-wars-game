@@ -1,0 +1,20 @@
+{
+  "Starship": {
+    "Name": "Name:",
+    "CostInCredits": "Cost in credits:",
+    "Crew": "Crew:",
+    "CargoCapacity": "Cargo capacity:",
+    "HyperdriveRating": "Hyperdrive rating:"
+  },
+  "Person": {
+    "Name": "Name:",
+    "Height": "Height:",
+    "Mass": "Mass:",
+    "HairColor": "Hair color:",
+    "SkinColor": "Skin color:",
+    "EyeColor": "Eye color:"
+  },
+  "ScoreCounter": {
+    "Score": "Score:"
+  }
+}
