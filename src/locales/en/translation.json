@@ -32,5 +32,8 @@
     "WonPlayerA": "Player A won",
     "WonPlayerB": "Player B won",
     "Draw": "Draw"
+  },
+  "Error": {
+    "FetchData": "Error"
   }
 }

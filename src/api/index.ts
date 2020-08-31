@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable class-methods-use-this */
 import { PeopleResponse, StarshipsResponse } from '../types';
+import { repleceHttpToHttps } from '../utils';
 
 class HttpClient {
   private get<T>(url: string): Promise<T> {
@@ -20,11 +21,11 @@ class HttpClient {
   }
 
   public getPeople(url: string) {
-    return this.get<PeopleResponse>(url);
+    return this.get<PeopleResponse>(repleceHttpToHttps(url));
   }
 
   public getStarships(url: string) {
-    return this.get<StarshipsResponse>(url);
+    return this.get<StarshipsResponse>(repleceHttpToHttps(url));
   }
 }
 
