@@ -3,9 +3,9 @@
 import {
   createSlice, PayloadAction,
 } from '@reduxjs/toolkit';
-import { AppThunk } from './store';
+import { AppThunk, RootState } from './store';
 import { Starship } from '../types';
-import { starshipsUrl } from '../constants/url';
+import { STARSHIPS_URL } from '../constants/url';
 
 type starshipsState = {
   starships: Starship[];
@@ -19,7 +19,7 @@ const initialState: starshipsState = {
   error: null,
 };
 
-export const people = createSlice({
+export const starships = createSlice({
   name: 'starships',
   initialState,
   reducers: {
@@ -42,13 +42,13 @@ export const {
   getStarshipsStart,
   getStarshipsSuccess,
   getStarshipsFailure,
-} = people.actions;
+} = starships.actions;
 
 export const fetchStarships = (): AppThunk => async (dispatch) => {
   try {
     dispatch(getStarshipsStart());
     const allStarships = [];
-    let getStarshipsUrl = starshipsUrl;
+    let getStarshipsUrl = STARSHIPS_URL;
     while (getStarshipsUrl) {
       const response = await fetch(getStarshipsUrl);
       const { next, results } = await response.json();
@@ -61,4 +61,5 @@ export const fetchStarships = (): AppThunk => async (dispatch) => {
   }
 };
 
-export default people.reducer;
+export const selectStarships = (state: RootState) => state.starships;
+export default starships.reducer;
