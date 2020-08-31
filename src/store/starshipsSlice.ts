@@ -6,6 +6,7 @@ import {
 import { AppThunk, RootState } from './store';
 import { Starship } from '../types';
 import { STARSHIPS_URL } from '../constants/url';
+import { api } from '../api';
 
 type starshipsState = {
   starships: Starship[];
@@ -50,10 +51,9 @@ export const fetchStarships = (): AppThunk => async (dispatch) => {
     const allStarships = [];
     let getStarshipsUrl = STARSHIPS_URL;
     while (getStarshipsUrl) {
-      const response = await fetch(getStarshipsUrl);
-      const { next, results } = await response.json();
+      const { next, results } = await api.getStarships(getStarshipsUrl);
       allStarships.push(...results);
-      getStarshipsUrl = next;
+      getStarshipsUrl = next || '';
     }
     dispatch(getStarshipsSuccess(allStarships));
   } catch (err) {

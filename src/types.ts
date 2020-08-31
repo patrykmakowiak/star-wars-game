@@ -39,6 +39,20 @@ export type Starship = {
   url: string;
 };
 
+export type StarshipsResponse = {
+  count: number;
+  previous: string | null;
+  next: string | null;
+  results: Starship[];
+}
+
+export type PeopleResponse = {
+  count: number;
+  previous: string | null;
+  next: string | null;
+  results: Person[];
+}
+
 export enum Step {
   START,
   SELECT_RESOURCE,
