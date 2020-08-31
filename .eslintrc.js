@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:jest/recommended'
   ],
   globals: {
     Atomics: 'readonly',
@@ -29,6 +30,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'jest'
   ],
   rules: {
     'linebreak-style': 0,
@@ -47,6 +49,6 @@ module.exports = {
       },
     ],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error"
+    "@typescript-eslint/no-unused-vars": "error",
   },
 };

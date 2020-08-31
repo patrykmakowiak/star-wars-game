@@ -3,7 +3,7 @@ export const randCard = (numberOfCards: number):
 
 export const unifyCrew = (crew: string): number => {
   if (crew.includes(',')) {
-    return +(crew.replace(/,/, ''));
+    return +(crew.replace(/,/g, ''));
   }
   if (crew.includes('-')) {
     const indexDash = crew.indexOf('-') + 1;
