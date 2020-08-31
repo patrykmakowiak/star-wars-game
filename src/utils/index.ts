@@ -16,3 +16,5 @@ export const unifyCrew = (crew: string): number => {
 };
 
 export const unifyMass = (mass: string): number => (mass === 'unknown' ? 0 : +mass);
+
+export const repleceHttpToHttps = (url: string): string => url.replace(/http/g, 'https');

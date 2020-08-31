@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useTranslation } from 'react-i18next';
 
 import Game from './views/Game/Game';
 import { fetchPeople, selectPeople } from './store/peopleSlice';
@@ -20,9 +21,10 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { loading: loadingPeople } = useSelector(selectPeople);
-  const { loading: loadingStarships } = useSelector(selectStarships);
+  const { error: errorPeople, loading: loadingPeople } = useSelector(selectPeople);
+  const { error: errorStarships, loading: loadingStarships } = useSelector(selectStarships);
 
   useEffect(() => {
     dispatch(fetchPeople());
@@ -31,9 +33,10 @@ const App = () => {
 
   return (
     <div className={classes.app}>
-      {loadingPeople || loadingStarships ? (
-        <CircularProgress />
-      ) : (<Game />)}
+      {(loadingPeople || loadingStarships) && (<CircularProgress />)}
+      {(errorPeople || errorStarships) && (t('Error.FetchData'))}
+      {!loadingPeople && !loadingStarships && !errorPeople && !errorStarships
+      && (<Game />)}
     </div>
   );
 };
