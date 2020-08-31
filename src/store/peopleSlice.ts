@@ -6,6 +6,7 @@ import {
 import { AppThunk, RootState } from './store';
 import { Person } from '../types';
 import { PEOPLE_URL } from '../constants/url';
+import { api } from '../api';
 
 type peopleState = {
   people: Person[];
@@ -50,10 +51,9 @@ export const fetchPeople = (): AppThunk => async (dispatch) => {
     const allPeople = [];
     let getPeopleUrl = PEOPLE_URL;
     while (getPeopleUrl) {
-      const response = await fetch(getPeopleUrl);
-      const { next, results } = await response.json();
+      const { next, results } = await api.getPeople(getPeopleUrl);
       allPeople.push(...results);
-      getPeopleUrl = next;
+      getPeopleUrl = next || '';
     }
     dispatch(getPeopleSuccess(allPeople));
   } catch (err) {
