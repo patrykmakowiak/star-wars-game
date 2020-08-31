@@ -3,9 +3,9 @@
 import {
   createSlice, PayloadAction,
 } from '@reduxjs/toolkit';
-import { AppThunk } from './store';
+import { AppThunk, RootState } from './store';
 import { Person } from '../types';
-import { peopleUrl } from '../constants/url';
+import { PEOPLE_URL } from '../constants/url';
 
 type peopleState = {
   people: Person[];
@@ -48,7 +48,7 @@ export const fetchPeople = (): AppThunk => async (dispatch) => {
   try {
     dispatch(getPeopleStart());
     const allPeople = [];
-    let getPeopleUrl = peopleUrl;
+    let getPeopleUrl = PEOPLE_URL;
     while (getPeopleUrl) {
       const response = await fetch(getPeopleUrl);
       const { next, results } = await response.json();
@@ -61,4 +61,5 @@ export const fetchPeople = (): AppThunk => async (dispatch) => {
   }
 };
 
+export const selectPeople = (state: RootState) => state.people;
 export default people.reducer;

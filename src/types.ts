@@ -38,3 +38,20 @@ export type Starship = {
   edited: Date;
   url: string;
 };
+
+export enum Step {
+  START,
+  SELECT_RESOURCE,
+  SELECT_WINNER,
+}
+
+export enum Player {
+  A = 'PlayerA',
+  B = 'PlayerB',
+  BOTH = 'BothPlayers'
+}
+
+export enum TypeCard {
+  Starships,
+  People,
+}

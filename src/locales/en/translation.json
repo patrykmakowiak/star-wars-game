@@ -16,5 +16,21 @@
   },
   "ScoreCounter": {
     "Score": "Score:"
+  },
+  "Players:": {
+    "Player": "Player",
+    "A": "A",
+    "B": "B"
+  },
+  "Game": {
+    "Start": "Start",
+    "SelectStarships": "Select starships",
+    "SelectPeople": "Select people",
+    "PlayAgain": "Play again"
+  },
+  "GameStatus": {
+    "WonPlayerA": "Player A won",
+    "WonPlayerB": "Player B won",
+    "Draw": "Draw"
   }
 }
